@@ -5,21 +5,23 @@ module.exports = {
     var query = 'SELECT Path,Orientation FROM PhotoByDate WHERE Path LIKE "%' + path + '%" LIMIT 20';
       console.log(query);
       connection.query(query,
-      function(err, rows, fields)
-      {
-        if (!err)
+        function(err, rows, fields)
         {
-          console.log('Found ' + rows.length + ' rows');
-          //response.write('path=' + path);
-          for(var r in rows)
+          if (!err)
           {
-            response.write("  " + rows[r].Path);
+            console.log('Found ' + rows.length + ' rows');
+            //response.write('path=' + path);
+            for(var r in rows)
+            {
+              response.write("  " + rows[r].Path);
+              console.log(rows[r].Path);
+            }
+            response.end('bye!');
           }
-          response.end('bye!');
-        }
-        else
-        {
-          console.log('Error ' + err + ' while performing Query.');
-        }
-    });
-  }};
+          else
+          {
+            console.log('Error ' + err + ' while performing Query.');
+          }
+        });
+  }
+};
