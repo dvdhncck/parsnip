@@ -3,7 +3,7 @@ var http = require('http');
 var url = require('url');
 var mysql = require('mysql');
 var express = require("express");
-var finder = require('./finder.js');
+var finder = require('./Finder.js');
 
 var app = express();
 
