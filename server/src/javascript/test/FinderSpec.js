@@ -19,15 +19,18 @@ describe("Finder", function() {
           callback(undefined, fakeRows, undefined);
         });
 
-    // soak up the response
-    fakeResponse.write = jasmine.createSpy("write() spy");
-    fakeResponse.end = jasmine.createSpy("end() spy");
+    // spy up the response
+    fakeResponse.setHeader = jasmine.createSpy("setHeader() spy");
+    fakeResponse.status = jasmine.createSpy("status() spy");
+    fakeResponse.send = jasmine.createSpy("send() spy");
 
+    // when
     finder.getItemsForPath(fakeConnection, "foo", fakeResponse);
 
-    // check that the response is sane
-    expect(fakeResponse.write.calls.count()).toEqual(2);
-    expect(fakeResponse.end).toHaveBeenCalled();
+    // then
+    expect(fakeResponse.setHeader).toHaveBeenCalledWith('Content-Type', 'application/json');
+    expect(fakeResponse.status).toHaveBeenCalledWith(200);
+    expect(fakeResponse.send).toHaveBeenCalledWith('{"paths":["path1","path2"]}');
   });
 
 });

@@ -11,16 +11,22 @@ module.exports = {
           {
             console.log('Found ' + rows.length + ' rows');
             //response.write('path=' + path);
+
+            var result = [];
             for(var r in rows)
             {
-              response.write("  " + rows[r].Path);
-              console.log(rows[r].Path);
+              result.push(rows[r].Path);
             }
-            response.end('bye!');
+
+            response.setHeader('Content-Type', 'application/json');
+            response.status(200);
+            response.send(JSON.stringify({"paths":result}));
           }
           else
           {
             console.log('Error ' + err + ' while performing Query.');
+            response.status(500);
+            response.send(JSON.stringify({"fail":err}));
           }
         });
   }
