@@ -24,8 +24,19 @@ function handlePathRequest(request, response){
     finder.getItemsForPath(connection, photoPath, response);
 }
 
-app.get("/path/*",function(req,res){-
+function serveClient(request, response){
+
+   response.send("hello world");
+}
+
+app.get('/path/*',function(req,res){
         handlePathRequest(req,res);
 });
+
+app.get('/',function(req,res){
+        serveClient(req,res);
+});
+
+app.use(express.static('client/resources'));
 
 app.listen(PORT);

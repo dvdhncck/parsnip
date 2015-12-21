@@ -9,3 +9,9 @@ To push to github:
 (see https://www.npmjs.com/package/jasmine)
 
 sudo npm itall -g jasmine
+
+
+# nodemo  - auto reload ahoy!
+
+sudo npm install -g nodemon
+nodemon server.js
