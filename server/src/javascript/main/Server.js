@@ -33,10 +33,11 @@ app.get('/path/*',function(req,res){
         handlePathRequest(req,res);
 });
 
-app.get('/',function(req,res){
-        serveClient(req,res);
-});
+//app.get('/',function(req,res){
+//        serveClient(req,res);
+//});
 
 app.use(express.static('client/resources'));
+app.use(express.static('node_modules/'));
 
 app.listen(PORT);
