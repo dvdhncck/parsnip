@@ -2,7 +2,42 @@
 <script src="jquery/dist/jquery.min.js"></script>
 <script src="itemslide/dist/itemslide.min.js"></script>
 <script src="javascript/production/parsnip.js"></script>
+<style>
+    #scrolling { /* Carousel Frame */
+    overflow: hidden;
+    }
+
+    ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    position: absolute;
+    -webkit-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    }
+
+    li {
+    float: left;
+    }
+</style>
+
 <body>
 hello sailors
+
+<div id="scrolling">
+<ul>
+    <li>
+        <img src="photos/2008/2008-02-10-maremagnum/IMGP5337.JPG" width="600">
+    </li>
+    <li>
+        <img src="photos/2008/2008-02-10-maremagnum/IMGP5338.JPG" width="600">
+    </li>
+    <li>
+        <img src="photos/2008/2008-02-10-maremagnum/IMGP5339.JPG" width="600">
+    </li>
+</ul>
+</div>
+
 </body>
 </html>

@@ -3,6 +3,7 @@ var http = require('http');
 var url = require('url');
 var mysql = require('mysql');
 var express = require("express");
+
 var finder = require('./Finder.js');
 
 var app = express();
@@ -24,20 +25,18 @@ function handlePathRequest(request, response){
     finder.getItemsForPath(connection, photoPath, response);
 }
 
-function serveClient(request, response){
-
-   response.send("hello world");
-}
+//function serveClient(request, response){
+//
+//   response.send("hello world");
+//}
 
 app.get('/path/*',function(req,res){
         handlePathRequest(req,res);
 });
 
-//app.get('/',function(req,res){
-//        serveClient(req,res);
-//});
+app.use(express.static('client/resources'));  // local assets
+app.use(express.static('node_modules/'));     // 3rd party assets
 
-app.use(express.static('client/resources'));
-app.use(express.static('node_modules/'));
+app.use('/photos', express.static('/opt/photos/'));     // 3rd party assets
 
 app.listen(PORT);

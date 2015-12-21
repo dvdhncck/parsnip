@@ -1,5 +1,8 @@
 
 $(function(){
-$('body').text('hai2');
+
+ carousel = $("ul");
+ carousel.itemslide();
+
 })
 
