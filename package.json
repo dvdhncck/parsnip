@@ -1,9 +1,10 @@
 {
-  "name": "node-mysql",
+  "name": "parsnip",
   "version": "0.0.1",
   "dependencies": {
     "express": "^4.10.6",
-    "mysql": "^2.5.4"
+    "mysql": "^2.5.4",
+    "angular": "^1.4.8"
   },
   "devDependencies": {
     "jasmine": "~2.4.1"

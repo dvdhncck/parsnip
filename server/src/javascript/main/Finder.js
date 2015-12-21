@@ -2,7 +2,7 @@ module.exports = {
 
   getItemsForPath: function(connection, path, response)
   {
-    var query = 'SELECT Path,Orientation FROM PhotoByDate WHERE Path LIKE "%' + path + '%" LIMIT 20';
+    var query = 'SELECT Path,Orientation FROM PhotoByDate WHERE Path LIKE "' + path + '%" LIMIT 20';
       console.log(query);
       connection.query(query,
         function(err, rows, fields)

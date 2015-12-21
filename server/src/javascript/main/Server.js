@@ -16,15 +16,16 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-function handleRequest(request, response){
+function handlePathRequest(request, response){
 
     var requestUrl = url.parse(request.url, true);
-    var photoPath = requestUrl.query.path;
+    var photoPath = requestUrl.path.replace('/path/','');
+    //response.send(JSON.stringify({path:photoPath}));
     finder.getItemsForPath(connection, photoPath, response);
 }
 
-app.get("/",function(req,res){-
-        handleRequest(req,res);
+app.get("/path/*",function(req,res){-
+        handlePathRequest(req,res);
 });
 
 app.listen(PORT);
